@@ -1,17 +1,15 @@
-/*Font style*/
-
-$font--primary: "Karla", sans-serif;
-
-/*Colours*/
-
-$color-primary: rgb(21, 126, 210);
-$color-secondary: rgb(89, 178, 16);
-$color-white: #fff;
-$color-black: #222;
-$color-grey-light-1: #f7f7f7;
-$color-grey-light-2: #eee;
+@import "./variables.scss";
 
 body {
   font-family: $font--primary;
   line-height: 1.6;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+i {
+  margin-right: 5px;
 }
