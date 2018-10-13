@@ -3,5 +3,11 @@
 .Header__container {
   background-color: $color-primary;
   height: 15vh;
+  min-height: 150px;
   text-align: center;
+}
+.Header__middleContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

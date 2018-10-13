@@ -1,0 +1,47 @@
+@import "../../variables.scss";
+
+.Searchfield__form {
+  display: flex;
+  flex: 0 0 50%;
+  justify-content: center;
+
+  select {
+    font-family: inherit;
+    color: $color-grey-light-1;
+    flex: 2;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+
+    option {
+      color: #222;
+    }
+  }
+  input {
+    font-family: inherit;
+    padding: 15px;
+    font-size: 1.8rem;
+    width: 30rem;
+    color: $color-white;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid $color-grey-light-3;
+    outline: none;
+    flex: 7;
+    margin: 0 15px;
+  }
+  input::placeholder {
+    color: $color-white;
+  }
+  button {
+    flex: 1;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: $color-grey-dark-1;
+    cursor: pointer;
+  }
+}
