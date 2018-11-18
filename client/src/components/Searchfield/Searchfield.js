@@ -23,6 +23,7 @@ class Searchfield extends Component {
         className="Searchfield__form"
         onSubmit={this.handleSubmit}
         autoComplete="off"
+        autoCorrect="off"
       >
         <select
           required
@@ -45,6 +46,7 @@ class Searchfield extends Component {
           required
           name="search"
           placeholder="Search..."
+          autoCorrect="off"
           onChange={event => this.changeHandler(event, "input")}
         />
         <button>
