@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+
+.CartBox__container {
+  height: 40px;
+  min-width: 100px;
+  background-color: #1062a4;
+  display: flex;
+  color: $color-grey-light-3;
+}
+.CartBox__left {
+  height: 100%;
+  font-size: 18px;
+
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid $color-grey-light-3;
+}
+.CartBox__right {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
