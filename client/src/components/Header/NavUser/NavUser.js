@@ -6,7 +6,7 @@ const NavUser = props => {
   return (
     <nav className="NavUser__container">
       <ul className="NavUser__list">
-        <li className="NavUser__list__item">Rupee, ₹</li>
+        <li className="NavUser__list__item">INR, ₹</li>
         <li className="NavUser__list__item">
           <Link className="NavUser__list__link" to="/user/account">
             <i className="fas fa-user" />

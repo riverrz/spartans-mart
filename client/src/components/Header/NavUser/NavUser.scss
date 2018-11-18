@@ -3,7 +3,7 @@
 .NavUser__container {
   display: flex;
   justify-content: flex-end;
-  padding: 5px 30px 0 0;
+  padding-top: 5px;
   margin-bottom: 15px;
 }
 .NavUser__list {
@@ -17,11 +17,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  transition: 0.3s;
-  padding: 2px;
-}
-.NavUser__list__item:hover:not(:first-child) {
-  background-color: $color-grey-dark-1;
+  padding: 5px;
 }
 .NavUser__list__item:not(:last-of-type) {
   border-right: 1px solid #a3a3a3;
