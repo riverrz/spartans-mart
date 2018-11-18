@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+
+.NavCategory__container {
+  background-color: $color-primary-dark;
+  color: $color-grey-light-1;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+.NavCategory__list {
+  margin: auto;
+  height: 100%;
+  display: flex;
+}
+.NavCategory__category {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-left: 1px solid $color-grey-dark-1;
+}
+.NavCategory__category:first-of-type {
+    border-left: none;
+}
+.NavCategory__category:hover {
+  background-color: $color-primary-hover;
+}
