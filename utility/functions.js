@@ -3,7 +3,7 @@ const keys = require("../config/keys");
 const User = require("../models/User");
 
 function getTokenFromHeader(req) {
-  //Get the auth header value , if undefined send 403 response
+  //Get the auth header value , else return false
   const bearerHeader = req.headers["authorization"];
   if (bearerHeader) {
     return bearerHeader;
@@ -13,6 +13,7 @@ function getTokenFromHeader(req) {
 }
 
 async function getUserFromToken(req, res, next) {
+  // Get token
   const token = getTokenFromHeader(req);
   if (!token) {
     return res.status(403).json({
@@ -20,15 +21,17 @@ async function getUserFromToken(req, res, next) {
     });
   }
   try {
+    // Get authData present inside token
     const authData = await jwt.verify(token, keys.SECRET_KEY);
     if (!authData || !authData.id) {
       return res.status(403).json({
         error: "Token not valid"
       });
     }
+    // Find the user based on id present in token
     const foundUser = await User.findById(authData.id);
     if (foundUser) {
-      // Add user fields required in req.user
+      // Add user fields as per requirement in req.user
       req.user = {
         email: foundUser.email,
         id: authData.id
@@ -42,6 +45,7 @@ async function getUserFromToken(req, res, next) {
   }
 }
 
+// Further improve input sanitization !!
 function validateUser(req, res, next) {
   const { user } = req.body;
   if (!user || !user.email || !user.password) {
@@ -52,6 +56,7 @@ function validateUser(req, res, next) {
   next();
 }
 
+// Sign token based on payload and return it
 function signToken(payload) {
   return new Promise(async (resolve, reject) => {
     try {

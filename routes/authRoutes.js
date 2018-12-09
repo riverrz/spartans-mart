@@ -68,7 +68,6 @@ router.post("/login", validateUser, async function(req, res, next) {
 });
 
 // Dummy route to fetch a user from token
-
 router.get("/getUser", getUserFromToken, function(req, res, next) {
   //verify token from jwt
   res.json(req.user);
