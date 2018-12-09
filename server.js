@@ -15,14 +15,12 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/auth' , authRoutes);
+app.use("/auth", authRoutes);
 
 // Invoking routes
 userRoutes(app);
 
-
 //Listening on port
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });
-
