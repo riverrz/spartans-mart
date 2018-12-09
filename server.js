@@ -2,23 +2,29 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const mongoose = require("mongoose");
+
+// Importing keys.js
+const keys = require("./config/keys");
 
 // Importing routes
-const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 
 // Setting express
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Setting db
+mongoose.connect(keys.DB_URI);
+mongoose.set("useCreateIndex", true);
+
 // Setting middlewares to use
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/auth", authRoutes);
 
-// Invoking routes
-userRoutes(app);
+// Routes
+app.use("/auth", authRoutes);
 
 //Listening on port
 app.listen(PORT, () => {
