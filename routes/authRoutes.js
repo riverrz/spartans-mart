@@ -12,6 +12,9 @@ const {
 // Importing model
 const User = require("../models/User");
 
+// importing product model
+const Product = require("../models/product");
+
 router.post("/register", validateUser, async function(req, res, next) {
   const { user } = req.body;
   try {
@@ -72,5 +75,26 @@ router.get("/getUser", getUserFromToken, function(req, res, next) {
   //verify token from jwt
   res.json(req.user);
 });
+
+//dummy route for product adding 
+router.get('/add_product',function(req,res,next){
+	res.render('filepathforaddingproduct',{message:req.flash('success')});
+});
+
+router.post('/add_product',function(req,res,next){
+	var product=new Product();
+	product.category=req.body.id;
+	product.name=req.body.name;
+	product.price=parseInt(req.body.price);
+	product.image=faker.image.image();
+	product.save(function(error,newProduct){
+		if(error) return next(error);
+		req.flash('success','Successfully added a product');
+		return res.redirect('/add_product');
+	});
+
+
+
+
 
 module.exports = router;
