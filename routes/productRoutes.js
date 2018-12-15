@@ -4,16 +4,13 @@ const router = express.Router();
 // importing Product model
 const Product = require("../models/Product");
 
+// Helper funtions
+const { validateProduct } = require("../utility/functions");
+
 // Add a product
-router.post("/", async function(req, res) {
+router.post("/", validateProduct, async function(req, res) {
   try {
-    const productDetails = {
-      name: req.body.product.name,
-      category: req.body.product.category,
-      price: parseInt(req.body.product.price),
-      image: req.body.product.image
-    };
-    const newProduct = new Product(productDetails);
+    const newProduct = new Product(req.product);
     await newProduct.save();
     res.json({
       success: true

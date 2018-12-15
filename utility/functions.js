@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
 const User = require("../models/User");
 
+// User based utility functions
+
 function getTokenFromHeader(req) {
   //Get the auth header value , else return false
   const bearerHeader = req.headers["authorization"];
@@ -68,8 +70,27 @@ function signToken(payload) {
   });
 }
 
+// Product based utility functions
+function validateProduct(req, res, next) {
+  try {
+    const product = req.body.product;
+    product.price = parseInt(req.body.price);
+    const { name, category, price, image } = product;
+    if (!product || !name || !price || !category || !image) {
+      return res.status(400).json({
+        error: "Missing details"
+      });
+    }
+    req.product = product;
+    next();
+  } catch (err) {
+    res.json(500).json(err);
+  }
+}
+
 module.exports = {
   validateUser,
   signToken,
-  getUserFromToken
+  getUserFromToken,
+  validateProduct
 };
