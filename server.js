@@ -9,6 +9,7 @@ const keys = require("./config/keys");
 
 // Importing routes
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 // Setting express
 const app = express();
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/products", productRoutes);
 
 //Listening on port
 app.listen(PORT, () => {
