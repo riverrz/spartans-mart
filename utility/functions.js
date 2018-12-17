@@ -74,17 +74,22 @@ function signToken(payload) {
 function validateProduct(req, res, next) {
   try {
     const product = req.body.product;
-    product.price = parseInt(req.body.price);
-    const { name, category, price, image } = product;
-    if (!product || !name || !price || !category || !image) {
+    if (
+      !product ||
+      !product.name ||
+      !product.price ||
+      !product.category ||
+      !product.image
+    ) {
       return res.status(400).json({
         error: "Missing details"
       });
     }
+    product.price = parseInt(req.body.product.price);
     req.product = product;
     next();
   } catch (err) {
-    res.json(500).json(err);
+    res.status(500).json(err);
   }
 }
 

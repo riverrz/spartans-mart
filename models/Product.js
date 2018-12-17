@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
   category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category"
+    type: String,
+    required: true
   },
   name: {
     type: String,
