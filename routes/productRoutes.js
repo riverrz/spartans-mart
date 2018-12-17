@@ -7,7 +7,7 @@ const Product = require("../models/Product");
 // Helper funtions
 const { validateProduct } = require("../utility/functions");
 
-// Add a product
+// Add a product, ADD ADMIN PROTECTION
 router.post("/", validateProduct, async function(req, res) {
   try {
     const newProduct = new Product(req.product);
